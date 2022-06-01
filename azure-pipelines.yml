@@ -19,3 +19,18 @@ steps:
     npm install 
     node server.js
   displayName: 'npm install and build'
+  
+- script: |
+    npm pack
+  displayName: 'Package for release'
+
+- bash: | # Grab the package version
+    v=`node -p "const p = require('./package.json'); p.version;"`
+    echo "##vso[task.setvariable variable=packageVersion]$v"
+
+- task: CopyFiles@2
+  inputs:
+      contents: '*.tgz'
+      targetFolder: $(Build.ArtifactStagingDirectory)/npm
+  displayName: 'Copy archives to artifacts staging directory'
+
