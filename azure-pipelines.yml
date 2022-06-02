@@ -39,13 +39,6 @@ steps:
     artifactName: npm
   displayName: 'Publish npm artifact'
 
-- script: |  # Config can be set in .npmrc
-    npm config set //registry.npmjs.org/:_authToken=$(MAP_NPMTOKEN) 
-    npm config set scope "@myscope"
-    # npm config list
-    # npm --version
-    npm version patch --force
-    npm publish --access public
 
 - task: CmdLine@2 # Push changes to GitHub (substitute your repo)
   inputs:
