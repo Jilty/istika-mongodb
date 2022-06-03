@@ -39,7 +39,6 @@ steps:
     artifactName: npm
   displayName: 'Publish npm artifact'
 
-
 - task: CmdLine@2 # Push changes to GitHub (substitute your repo)
   inputs:
     script: |
