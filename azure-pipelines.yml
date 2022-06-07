@@ -22,7 +22,7 @@ steps:
 - script: |
     npm pack
   displayName: 'Package for release'
-    
+      
 - bash: | # Grab the package version
     v=`node -p "const p = require('./package.json'); p.version;"`
     echo "##vso[task.setvariable variable=packageVersion]$v"
