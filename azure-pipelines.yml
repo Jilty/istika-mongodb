@@ -22,12 +22,12 @@ steps:
     Contents: |
       **/*
       !.git/**/*
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/mongonode'
 
 - task: PublishBuildArtifacts@1 
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/npm'
-    artifactName: npm
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/mongonode'
+    artifactName: mongonode
   displayName: 'Publish npm artifact'
  
 - powershell: |
