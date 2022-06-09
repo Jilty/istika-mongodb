@@ -15,7 +15,7 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
  
- - powershell: |
+- powershell: |
    Write-Host "Show all folder content"
    Get-ChildItem -Path $(Agent.WorkFolder)\*.* -Recurse -Force
   errorActionPreference: continue
