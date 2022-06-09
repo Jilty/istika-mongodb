@@ -14,6 +14,13 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
+ 
+ - powershell: |
+   Write-Host "Show all folder content"
+   Get-ChildItem -Path $(Agent.WorkFolder)\*.* -Recurse -Force
+  errorActionPreference: continue
+  displayName: 'PowerShell Script List folder structure'
+  continueOnError: true 
 
 - script: |
     npm install 
