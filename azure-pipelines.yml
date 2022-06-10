@@ -35,21 +35,7 @@ steps:
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/npm'
     artifactName: npm
-  displayName: 'Publish npm artifact'  
-  
-  
-  
-  
-  
-  
-  
-  
-
-         
-
-        
-
-  
+  displayName: 'Publish npm artifact' 
 
 
 
