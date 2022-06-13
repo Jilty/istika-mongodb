@@ -4,9 +4,14 @@
   "description": "Project to automate project setup",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "react-scripts build"
       },
+=======
+    "test": "echo \"no test"
+  },
+>>>>>>> abeb429507cafe469623f1582832a6d4a19ac12d
   "author": "Basil Baby",
   "license": "ISC",
   "dependencies": {
