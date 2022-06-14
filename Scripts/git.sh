@@ -28,11 +28,11 @@ then
     echo "stop server"
     pm2 stop server.js
     echo "pull new code"
-    git pull origin master
+    git pull origin master > /dev/null 2>&1
     echo "start server"
     pm2 start server.js
 else
-    git clone https://github.com/Jilty/istika-mongodb.git
+    git clone https://github.com/Jilty/istika-mongodb.git > /dev/null 2>&1
     cd istika-mongodb
     pm2 start server.js
     
