@@ -41,7 +41,7 @@ else
     git clone https://github.com/Jilty/istika-mongodb.git > /dev/null 2>&1
     cd istika-mongodb
     pm2 start server.js
-    
+       
 fi
 
 
