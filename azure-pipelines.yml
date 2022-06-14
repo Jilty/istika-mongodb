@@ -10,7 +10,7 @@ stages:
  stage: Deploy 
  displayName: 'Deploy Node JS in Digital Ocean Server'
  jobs:
- - deployment: DeployWeb
+  - deployment: DeployWeb
   displayName: deploy Web App
   pool:
     vmImage: 'ubuntu-latest'  
