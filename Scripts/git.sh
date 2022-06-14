@@ -14,11 +14,12 @@ then
   sudo apt-get install nodejs
 fi
 
-pm2 --version 2>&1 >/dev/null
-PM2_IS_AVAILABLE=$?
-if [ $PM2_IS_AVAILABLE -eq 0 ];
-then
-  npm install pm2 -g
+REQUIRED_PKG="pm2"
+PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
+echo Checking for $REQUIRED_PKG: $PKG_OK
+if [ "" = "$PKG_OK" ]; then
+  echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
+  npm install -g $REQUIRED_PKG
 fi
 
 
