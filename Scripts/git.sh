@@ -34,7 +34,7 @@ then
 else
     git clone https://github.com/Jilty/istika-mongodb.git
     cd istika-mongodb
-    pm2 server.js
+    pm2 start server.js
     
 fi
 
