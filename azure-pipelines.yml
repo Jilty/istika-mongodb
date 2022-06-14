@@ -6,31 +6,30 @@
 trigger:
 - master
 
-stages: 
+stages:  
  - stage: Deploy 
    displayName: 'Deploy Node JS in Digital Ocean Server'
    jobs:
-    - deployment: DeployWeb
-    displayName: deploy Web App
+    - deployment:
     pool:
       vmImage: 'ubuntu-latest'    
-      steps:
-        - task: CopyFilesOverSSH@0
-          displayName: 'Securely copy files to the remote machine'
-          inputs:
-            sshEndpoint: 'Digital ocean Connection'
-            sourceFolder: Scripts
-            targetFolder: '~/'
-     
-        - task: SSH@0
-          displayName: 'Run shell inline on remote machine'
-          inputs:
-            sshEndpoint: 'Digital ocean Connection'
-            runOptions: inline
-            inline: |
-             sudo chmod +s git.sh
-             chmod +x git.sh
-             bash git.sh
+    steps:
+      - task: CopyFilesOverSSH@0
+        displayName: 'Securely copy files to the remote machine'
+        inputs:
+          sshEndpoint: 'Digital ocean Connection'
+          sourceFolder: Scripts
+          targetFolder: '~/'
+
+      - task: SSH@0
+        displayName: 'Run shell inline on remote machine'
+        inputs:
+          sshEndpoint: 'Digital ocean Connection'
+          runOptions: inline
+          inline: |
+           sudo chmod +s git.sh
+           chmod +x git.sh
+           bash git.sh
    
 
 
