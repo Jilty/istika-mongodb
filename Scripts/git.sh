@@ -10,7 +10,7 @@ fi
 node --version 2>&1 >/dev/null
 NODE_IS_AVAILABLE=$?
 echo Checking for NPM: $NODE_IS_AVAILABLE
-if [ $NODE_IS_AVAILABLE -eq 0 ];
+if [ $NODE_IS_AVAILABLE -eq 127 ];
 then
   curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
   sudo apt-get install -y nodejs
