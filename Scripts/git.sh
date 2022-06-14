@@ -26,6 +26,12 @@ fi
 if [[ -d /istika-mongodb ]]
 then
     echo "stop server"
+    pm2 describe appname > /dev/null
+    RUNNING=$?
+    echo pm2 server running $RUNNING 
+    if [ "${RUNNING}" -ne 0 ]; then
+      pm2 stop server.js    
+    fi;
     pm2 stop server.js
     echo "pull new code"
     git pull origin master > /dev/null 2>&1
