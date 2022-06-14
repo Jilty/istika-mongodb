@@ -15,7 +15,8 @@ then
 fi
 
 REQUIRED_PKG="pm2"
-PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
+pm2 --version  >/dev/null
+PKG_OK=$?
 echo Checking for $REQUIRED_PKG: $PKG_OK
 if [ "" = "$PKG_OK" ]; then
   echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
