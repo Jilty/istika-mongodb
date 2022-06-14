@@ -1,9 +1,9 @@
 #! bin/bash 
 
-git --version
+git --version 2>&1 >/dev/null
 GIT_IS_AVAILABLE=$?
 # ...
 if [ $GIT_IS_AVAILABLE -eq 0 ];
 then
-  sudo apt install git
+  sudo apt-get install git
 fi  
