@@ -14,14 +14,14 @@ then
   sudo apt-get install nodejs
 fi
 
-# REQUIRED_PKG="pm2"
-# pm2 --version  &> /dev/null
-# PKG_OK=$?
-# echo Checking for $REQUIRED_PKG: $PKG_OK
-# if [ $PKG_OK -eq 0 ]; then
-#   echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
-#   npm install -g $REQUIRED_PKG
-# fi
+REQUIRED_PKG="pm2"
+pm2 --version  &> /dev/null
+PKG_OK=$?
+echo Checking for $REQUIRED_PKG: $PKG_OK
+if [ $PKG_OK -eq 0 ]; then
+  echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
+  npm install -g $REQUIRED_PKG
+fi
 
 if [[ -d /istika-mongodb ]]
 then
