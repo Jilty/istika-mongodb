@@ -12,6 +12,7 @@ NODE_IS_AVAILABLE=$?
 if [ $NODE_IS_AVAILABLE -eq 0 ];
 then
   sudo apt-get install nodejs
+  sudo apt-get install npm
 fi
 
 REQUIRED_PKG="pm2"
