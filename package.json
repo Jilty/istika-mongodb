@@ -4,8 +4,8 @@
   "description": "Project to automate project setup",
   "main": "index.js",
   "scripts": {
-    "test": "no test specified",
-    "build": "react-scripts build"     
+    "start": "node server.js",
+    "test": "no test specified"   
   },
   "author": "Basil Baby",
   "license": "ISC",
