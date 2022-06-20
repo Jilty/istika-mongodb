@@ -11,3 +11,7 @@ then
   sudo systemctl start mongod.service
   sudo systemctl status mongod
 fi
+
+sudo systemctl status docker 2>&1 >/dev/null
+DOCKER_IS_AVAILABLE=$?
+echo Checking for MongoDB VERSION: $DOCKER_IS_AVAILABLE
