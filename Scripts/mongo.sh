@@ -12,7 +12,7 @@ then
   sudo systemctl status mongod
 fi
 
-sudo systemctl status docker 2>&1 >/dev/null
+docker -v 2>&1 >/dev/null
 DOCKER_IS_AVAILABLE=$?
 echo Checking for MongoDB VERSION: $DOCKER_IS_AVAILABLE
 if [ $DOCKER_IS_AVAILABLE -eq 127 ];
