@@ -15,3 +15,15 @@ fi
 sudo systemctl status docker 2>&1 >/dev/null
 DOCKER_IS_AVAILABLE=$?
 echo Checking for MongoDB VERSION: $DOCKER_IS_AVAILABLE
+if [ $DOCKER_IS_AVAILABLE -eq "Unit docker.service could not be found" ];
+then
+  sudo apt update
+  sudo apt install apt-transport-https ca-certificates curl software-properties-common
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+  sudo apt update
+  apt-cache policy docker-ce
+  sudo apt install docker-ce
+ fi 
+  
+  
