@@ -14,7 +14,7 @@ fi
 
 docker -v 2>&1 >/dev/null
 DOCKER_IS_AVAILABLE=$?
-echo Checking for MongoDB VERSION: $DOCKER_IS_AVAILABLE
+echo Checking for DOCKER VERSION: $DOCKER_IS_AVAILABLE
 if [ $DOCKER_IS_AVAILABLE -eq 127 ];
 then
   sudo apt update
@@ -22,9 +22,8 @@ then
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
   sudo apt update
-  apt-cache policy docker-ce
-  ps aux | grep -i apt
-  sudo apt install docker-ce -y whatever
+  apt-cache policy docker-ce 2>/dev/null | grep packages | cut -d '.' -f 1
+  sudo apt install docker-ce 2>/dev/null | grep packages | cut -d '.' -f 1
  fi 
   
   
