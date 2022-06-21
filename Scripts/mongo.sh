@@ -1,3 +1,4 @@
+#! bin/bash
 mongod --version 2>&1 >/dev/null
 MONGO_IS_AVAILABLE=$?
 echo Checking for MongoDB VERSION: $MONGO_IS_AVAILABLE
