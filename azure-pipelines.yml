@@ -14,23 +14,44 @@ stages:
    - job:
      pool:
       vmImage: 'ubuntu-latest' 
-     steps:
-     - task: CopyFilesOverSSH@0
-       displayName: 'Securely copy files to the remote machine'
-       inputs:
-         sshEndpoint: 'Digital ocean Connection'
-         sourceFolder: Scripts
-         targetFolder: '~/'
+     steps:      
+       - task: Docker@2
+         displayName: 'Build Image'
+         inputs:
+           containerRegistry: 'Docker-service-connection'
+           repository: 'jilty / digital-ocean-app'
+      
+       - task: CopyFilesOverSSH@0
+         displayName: 'Securely copy files to the remote machine'
+         inputs:
+           sshEndpoint: 'Digital ocean Connection'
+           sourceFolder: Scripts
+           targetFolder: '~/'    
+       - task: SSH@0
+         displayName: 'Run shell inline on remote machine'
+         inputs:
+           sshEndpoint: 'Digital ocean Connection'
+           runOptions: inline
+           inline: |
+            sudo kill -9 `sudo lsof -t -i:8082`
+            docker pull jilty/digital-ocean-app:latest
+            docker run -d --network host  jilty/digital-ocean-app:latest    
+#      - task: CopyFilesOverSSH@0
+#        displayName: 'Securely copy files to the remote machine'
+#        inputs:
+#          sshEndpoint: 'Digital ocean Connection'
+#          sourceFolder: Scripts
+#          targetFolder: '~/'
 
-     - task: SSH@0
-       displayName: 'Run shell inline on remote machine'
-       inputs:
-         sshEndpoint: 'Digital ocean Connection'
-         runOptions: inline
-         inline: |
-          sudo chmod +s git.sh
-          chmod +x git.sh
-          bash git.sh
+#      - task: SSH@0
+#        displayName: 'Run shell inline on remote machine'
+#        inputs:
+#          sshEndpoint: 'Digital ocean Connection'
+#          runOptions: inline
+#          inline: |
+#           sudo chmod +s git.sh
+#           chmod +x git.sh
+#           bash git.sh
    
 
 
