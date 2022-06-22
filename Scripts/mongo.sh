@@ -47,8 +47,8 @@ DOCKER_IS_AVAILABLE=$?
 echo Checking for DOCKER VERSION: $DOCKER_IS_AVAILABLE
 if [ $DOCKER_IS_AVAILABLE -eq 127 ];
 then
-    curl -fsSL https://get.docker.com -o get-docker.sh
-    sh get-docker.sh
+    curl -fsSL https://get.docker.com -o get-docker.sh - 2>&1 >/dev/null
+    sh get-docker.sh - 2>&1 >/dev/null
 #   sudo apt update
 #   sudo apt install apt-transport-https ca-certificates curl software-properties-common -y whatever
 #   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
