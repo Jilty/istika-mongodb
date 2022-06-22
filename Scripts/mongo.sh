@@ -8,7 +8,7 @@ then
   apt-key list - 2>&1 >/dev/null
   echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee etc/apt/sources.list.d/mongodb-org-4.4.list - 2>&1 >/dev/null
   sudo apt-get update - 2>&1 >/dev/null
-  sudo apt-get install mongodb-org - 2>&1 >/dev/null
+  sudo apt-get install -y mongodb-org - 2>&1 >/dev/null
   sudo systemctl start mongod.service - 2>&1 >/dev/null
   sudo systemctl status mongod
 fi
