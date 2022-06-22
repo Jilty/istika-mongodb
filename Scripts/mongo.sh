@@ -39,25 +39,7 @@ else
   sudo bash -c "systemctl enable mongod"  #enables Mongo on system startup
   sudo bash -c "service mongod start"
 
-  echo "Username for your Mongo DB admin account (DONOT use ampersands -> @)?"
-  read mongo_admin_user
-  
-  echo "What is the password you want to set for $mongo_admin_user (DONOT use ampersands -> @)?"
-  read mongo_admin_pwd 
-  
-  echo "User name will be set to $mongo_admin_user and password to $mongo_admin_pwd."
-  
-  mongo "admin" --eval "db.createUser({'user':'$mongo_admin_user','pwd':'$mongo_admin_pwd','roles': ['userAdminAnyDatabase','readWriteAnyDatabase']})"  
-  
-  sudo bash -c "echo ' ' >> /etc/mongod.conf"
-  sudo bash -c "echo 'security:' >> /etc/mongod.conf"
-  sudo bash -c "echo '  authorization: enabled' >> /etc/mongod.conf"    
-  
-  sudo bash -c "service mongod restart"
-
-  #this is just a sanity check to ensure everything worked
-  mongo "yourproject-com" -u $mongo_admin_user -p --authenticationDatabase admin --eval "db.createCollection('dummy')"
-  mongo -u $mongo_admin_user -p --authenticationDatabase admin --eval "db.createUser({'user':'yourproject-web-user','pwd':'passw0rd123','roles':[{'role':'dbOwner','db':'yourproject-com'}]})"
+ 
 fi
 
 docker -v 2>&1 >/dev/null
